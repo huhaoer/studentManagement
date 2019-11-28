@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .notify{
+            width: 200px;
+            height: 40px;
+            background-color: lime;
+            color: #fff;
+            font-size: 16px;
+            text-align: center;
+            line-height: 40px;
+            border-radius: 3px;
+            position: fixed;
+            top: 10%;
+            left: calc(50% - 100px);
+        }
+        .fadeIn{
+            animation: fade_in 0.7s;
+        }
+        .fadeOut{
+            animation: fade_out 0.7s;
+        }
+        /* 展示弹框动画 */
+        @keyframes fade_in{
+            0%{
+                top:0;
+                opacity:0;
+            }
+            100%{
+                top:10%;
+                opacity:1;
+            }
+        }
+        /* 隐藏弹窗动画 */
+        @keyframes fade_out{
+            0%{
+                top: 10%;
+                opacity: 1;
+            }
+            100%{
+                top: 0;
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <button>点击</button>
+    <!-- <script>
+        document.getElementsByTagName('button')[0].onclick = function() {
+            const app = new Vue({
+                el: document.createElement('div'),
+                template: `<div class="notify" :class="{fadeIn: showNotify,fadeOut: !showNotify}" v-if="exit">
+                            修改成功
+                        </div>`,
+                data: {
+                    showNotify: true,//判断弹框是否显示,默认初始显示fadeIn弹窗进入动画,点击之后切换动画
+                    exit: true,//判断弹框展示完毕然后消失,默认展示弹窗,点击之后v-if为false隐藏弹窗
+                }
+            })
+            document.body.appendChild(app.$el)//将vue实例添加到body
+            setInterval( _ => {
+                // 定时器 过1s展示fadeOut弹窗出去动画
+                app.showNotify = false;
+            }, 1000);
+            setInterval( _ => {
+                // 定时器 过1.2s将弹窗隐藏
+                app.exit = false;
+            }, 1200);
+        }
+    </script> -->
+</body>
+</html>

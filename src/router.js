@@ -1,27 +1,27 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from './views/Home.vue'
-
+import studentList from '@/views/studentList.vue';//引入学生信息页组件,用作路由
+import addStudent from '@/views/addStudent.vue';//引入添加学生页组件,用作路由
 Vue.use(Router)
 
 export default new Router({
   mode: 'history',
   base: process.env.BASE_URL,
+  linkActiveClass: 'active',
   routes: [
-    {
-      path: '/',
-      name: 'home',
-      component: Home
-    },
-    {
-      path: '/about',
-      name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: function () { 
-        return import(/* webpackChunkName: "about" */ './views/About.vue')
+      {
+        path: '/studentList',
+        name: 'studentList',
+        component: studentList
+      },
+      {
+        path: '/addStudent',
+        name: 'addStudent',
+        component: addStudent
+      },
+      {
+        path: '*',//匹配剩余的,默认显示到学生信息页
+        redirect: '/studentList'
       }
-    }
   ]
 })
